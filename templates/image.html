@@ -12,6 +12,11 @@
       <!-- Custom styles for this template -->
       <link href="https://getbootstrap.com/docs/4.1/examples/starter-template/starter-template.css" rel="stylesheet">
    </head>
+<style>
+@media screen and (min-width: 768px){
+            .rwd-break { display: none; }
+        }
+</style>
    <body>
 	   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 		   <a class="navbar-brand" href="#">Dr. Internet</a>
@@ -31,13 +36,9 @@
 	 <main role="main" class="container">
 
 	 <h1> You have {{classes[0][0]}}!</h1>
-	 <table>
-		 <td>
-			 <img src="/static/{{filename}}" alt="Your gross image" width=500px >
-		 </td><td>
-			 <img src="/static/{{ref_img}}" alt="Reference image" width=500px>
-		 </td>
-	 </table>
+			 <img src="/static/{{filename}}" alt="Your gross image" width=500px class="resp">
+<br class="rwd-break" />
+			 <img src="/static/{{ref_img}}" alt="Reference image" width=500px class="resp">
 	 </main>
 	 <!-- Bootstrap core JavaScript
     ================================================== -->
