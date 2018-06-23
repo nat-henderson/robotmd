@@ -19,7 +19,7 @@ def upload_file():
             filename = os.path.join('./static', file.filename)
             file.save(filename)
             classes = intel.what_class(filename)
-            cl = classes[0][0]
+            cl = classes[0][0].replace(' ', '_')
             ref_img = random.choice([os.path.join(cl, x) for x in os.listdir(os.path.join('./static', cl)) if os.path.isfile(os.path.join('./static', cl, x))])
             return render_template('image.html', classes = classes, filename = file.filename, ref_img=ref_img)
     return render_template('main.html')
