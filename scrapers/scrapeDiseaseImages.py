@@ -17,7 +17,7 @@ for d in diseases:
     query='+'.join(query)
     url="https://www.google.co.in/search?q="+query+"&source=lnms&tbm=isch"
     print url
-    DIR=d.replace(" ", "_").replace("\n","")
+    DIR=d.replace(" ", "_").replace("\n","").replace("/", "_")
     header={'User-Agent':"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"
     }
     soup = get_soup(url,header)
@@ -31,12 +31,8 @@ for d in diseases:
 
     if not os.path.exists(DIR):
                 os.mkdir(DIR)
-    DIR = os.path.join(DIR, query.split()[0])
-
-    if not os.path.exists(DIR):
-                os.mkdir(DIR)
     ###print images
-    for i , (img , Type) in enumerate( ActualImages[:5]):
+    for i , (img , Type) in enumerate( ActualImages[:15]):
         try:
             req = urllib2.Request(img, headers={'User-Agent' : header})
             raw_img = urllib2.urlopen(req).read()
