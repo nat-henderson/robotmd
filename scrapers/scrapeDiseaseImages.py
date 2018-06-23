@@ -31,12 +31,8 @@ for d in diseases:
 
     if not os.path.exists(DIR):
                 os.mkdir(DIR)
-    DIR = os.path.join(DIR, query.split()[0])
-
-    if not os.path.exists(DIR):
-                os.mkdir(DIR)
     ###print images
-    for i , (img , Type) in enumerate( ActualImages[:5]):
+    for i , (img , Type) in enumerate( ActualImages[:15]):
         try:
             req = urllib2.Request(img, headers={'User-Agent' : header})
             raw_img = urllib2.urlopen(req).read()
