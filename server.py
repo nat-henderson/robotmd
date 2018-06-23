@@ -1,5 +1,4 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
-from intel import what_class
 import os
 
 app = Flask(__name__)
@@ -17,7 +16,8 @@ def upload_file():
         if file:
             filename = os.path.join('/tmp', file.filename)
             file.save(filename)
-            classes = what_class(filename)
+            import intel
+            classes = intel.what_class(filename)
             return render_template('image.html', classes = classes)
     return render_template('main.html')
 
