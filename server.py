@@ -1,7 +1,7 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/tmp')
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -18,7 +18,7 @@ def upload_file():
             file.save(filename)
             import intel
             classes = intel.what_class(filename)
-            return render_template('image.html', classes = classes)
+            return render_template('image.html', classes = classes, filename = file.filename)
     return render_template('main.html')
 
 if __name__ == '__main__':
