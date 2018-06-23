@@ -1,14 +1,14 @@
 import tensorflow as tf
 import sys
 
-label_lines = [line.rstrip() for line in tf.gfile.GFile('/tmp/output_labels.txt')]
-with tf.gfile.FastGFile('/tmp/output_graph.pb', 'rb') as f:
-  graph_def = tf.GraphDef()
-  graph_def.ParseFromString(f.read())
-  _ = tf.import_graph_def(graph_def, name='')
-
 def what_class(image_path):
-  print image_path
+  label_lines = [line.rstrip() for line in tf.gfile.GFile('/tmp/output_labels.txt')]
+  with tf.gfile.FastGFile('/tmp/output_graph.pb', 'rb') as f:
+    graph_def = tf.GraphDef()
+    graph_def.ParseFromString(f.read())
+    _ = tf.import_graph_def(graph_def, name='')
+
+
   image_data = tf.gfile.FastGFile(image_path, 'rb').read()
 
   with tf.Session() as sess:
