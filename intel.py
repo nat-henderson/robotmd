@@ -20,6 +20,5 @@ def what_class(image_path):
     for node_id in top_k:
       name = label_lines[node_id]
       score = predictions[0][node_id]
-      classes.append('%s (score = %.5f)' % (name, score))
-    print '\n'.join(classes)
-    return '\n'.join(classes)
+      classes.append((name, score))
+    return classes

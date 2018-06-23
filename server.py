@@ -1,4 +1,5 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
+from intel import what_class
 
 app = Flask(__name__)
 
@@ -13,8 +14,10 @@ def upload_file():
             flash('No selected file')
             return redirect(request.url)
         if file:
-            filename = file.filename
-            return render_template('image.html')
+            filename = os.path.join('/tmp', file.filename)
+            file.save(filename)
+            classes = what_class(filename)
+            return render_template('image.html', classes = classes)
     return render_template('main.html')
 
 if __name__ == '__main__':
